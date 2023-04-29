@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+import Grid from "@mui/material/Grid";
 
 function App() {
   return (
-    <div className="App">
+    <Grid className="App">
       <p>Hello world</p>
-    </div>
+    </Grid>
   );
 }
 
