@@ -1,0 +1,17 @@
+@media (max-width: 1300px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 1100px) {
+    html {
+        font-size:9px;
+    }
+}
+
+.app { 
+    width: 100vw; 
+    height: 100vh;
+    background-color: lightgray;
+}

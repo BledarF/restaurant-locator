@@ -1,0 +1,14 @@
+
+.base { 
+    background-color: darkslategray !important;
+    border: 2px black solid !important;
+    color: white !important;
+    width: 6rem !important;
+    height: 2.5rem !important;
+    font-size: 0.85rem !important;
+}
+
+.base:hover { 
+    background-color: green !important;
+    border: 2px black solid !important;
+}
