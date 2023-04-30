@@ -7,7 +7,13 @@ import "./styles/base/_base.scss";
 
 function App() {
   return (
-    <Grid className="app" container item justifyContent="center">
+    <Grid
+      className="app"
+      container
+      item
+      justifyContent="center"
+      alignItems="flex-start"
+    >
       <NavBar />
       <HomePage />
     </Grid>
