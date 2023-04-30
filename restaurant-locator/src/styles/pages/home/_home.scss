@@ -1,10 +1,29 @@
 .home-page-container {
+ margin-bottom: 15rem;
 
-    
 
     .card-container { 
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 30rem;
+        width: 40rem;
+        box-shadow: 0 10px 35px rgba(50,50,93,.1),0 2px 15px rgba(0,0,0,.07);
 
+        .title { 
+            margin-bottom: 0.3rem;
+            font-size: 1.5rem;
+        }
 
+        .subheading { 
+            width: 27rem;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            line-height: 1.5rem;
+            font-size: 0.9rem;
+        }
     }
 
 }
