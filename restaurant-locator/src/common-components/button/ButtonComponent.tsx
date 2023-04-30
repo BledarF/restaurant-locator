@@ -1,13 +1,13 @@
 import React from "react";
 import { MouseEventHandler } from "react";
 import Button from "@mui/material/Button";
-import ButtonVariant from "../../data/Types";
+import { ButtonVariants } from "../../data/Types";
 import "../../styles/common-components/button/_button.scss";
 
 interface ButtonProps {
   label: string;
-  onClickHandler: MouseEventHandler<HTMLButtonElement>;
-  variant?: ButtonVariant;
+  onClickHandler?: MouseEventHandler<HTMLButtonElement>;
+  variant?: ButtonVariants;
   isDisabled?: boolean;
   className?: string;
 }

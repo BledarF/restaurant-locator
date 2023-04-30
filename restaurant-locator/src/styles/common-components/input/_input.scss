@@ -1,0 +1,26 @@
+
+.input-base { 
+    display: block;
+    height: 3rem;
+    width: 100%;
+    border-radius: 4px;
+    padding: 0 0.3rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.input-base:focus {
+    outline: none;
+  }
+::placeholder{
+    color: #e5e5e5;
+}
+
+.input-error {
+    font-size: 0.7rem;
+    color: red;
+}
+
+.input-label { 
+    font-weight: 500;
+}

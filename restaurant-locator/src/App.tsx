@@ -4,6 +4,7 @@ import Grid from "@mui/material/Grid";
 import { NavBar } from "./layout/navbar/NavBar";
 import { HomePage } from "./pages/home/HomePage";
 import "./styles/base/_base.scss";
+import { LoginPage } from "./pages/login/LoginPage";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       alignItems="flex-start"
     >
       <NavBar />
-      <HomePage />
+      {/* <HomePage /> */}
+      <LoginPage />
     </Grid>
   );
 }
