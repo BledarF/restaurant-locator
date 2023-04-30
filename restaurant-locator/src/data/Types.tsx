@@ -1,3 +1,2 @@
-type ButtonVariant = "contained" | "outlined" | "text";
-
-export default ButtonVariant;
+export type ButtonVariants = "contained" | "outlined" | "text";
+export type InputVaraints = "standard" | "filled" | "standard";
