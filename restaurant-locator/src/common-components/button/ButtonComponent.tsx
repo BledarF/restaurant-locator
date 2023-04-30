@@ -1,6 +1,8 @@
+import React from "react";
 import { MouseEventHandler } from "react";
 import Button from "@mui/material/Button";
 import ButtonVariant from "../../data/Types";
+import "../../styles/common-components/button/_button.scss";
 
 interface ButtonProps {
   label: string;

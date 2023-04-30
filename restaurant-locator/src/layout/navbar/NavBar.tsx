@@ -1,10 +1,11 @@
+import React from "react";
 import { Grid } from "@mui/material";
-import { Constants } from "../../data/Constants";
+import RESTAURANT_LOCATOR_NAME from "../../data/GeneralConstants";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
+import "../../styles/layout/_navbar.scss";
+import "../../styles/common-components/button/_button.scss";
 
 export const NavBar = () => {
-  const RESTAURANT_LOCATOR_NAME = Constants.general.RESTAURANT_LOCATOR_NAME;
-
   const loginButtonClick = () => {
     console.log("i clicked the  button");
   };
@@ -14,11 +15,34 @@ export const NavBar = () => {
   };
 
   return (
-    <Grid>
-      <h2>{RESTAURANT_LOCATOR_NAME}</h2>
-      <Grid>
-        <ButtonComponent label="Login" onClickHandler={loginButtonClick} />
-        <ButtonComponent label="Sign up" onClickHandler={signupButtonClick} />
+    <Grid
+      item
+      container
+      justifyContent="space-between"
+      alignItems="center"
+      className="navbar-container"
+    >
+      <Grid className="logo-container">
+        <h2 className="restaurant-logo">{RESTAURANT_LOCATOR_NAME}</h2>
+      </Grid>
+      <Grid
+        className="buttons-container"
+        container
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <ButtonComponent
+          label="Login"
+          variant="outlined"
+          onClickHandler={loginButtonClick}
+          className="base"
+        />
+        <ButtonComponent
+          label="Sign up"
+          variant="outlined"
+          onClickHandler={signupButtonClick}
+          className="base"
+        />
       </Grid>
     </Grid>
   );
