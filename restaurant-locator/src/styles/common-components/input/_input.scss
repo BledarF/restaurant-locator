@@ -4,23 +4,41 @@
     height: 3rem;
     width: 100%;
     border-radius: 4px;
-    padding: 0 0.3rem;
     margin-top: 0.5rem;
     font-size: 1rem;
     font-weight: 300;
+    border: 2px solid black;
 }
 .input-base:focus {
     outline: none;
   }
-::placeholder{
-    color: #e5e5e5;
-}
 
-.input-error {
-    font-size: 0.7rem;
+
+.input-error { 
+    display: block;
+    height: 3rem;
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 300;
+    border: 2px solid red;
+}
+.input-error:focus {
+    outline: none;
+  }
+
+
+.input-error-message {
+    font-size: 0.8rem;
     color: red;
+    margin: 0.5rem 0;
 }
 
 .input-label { 
     font-weight: 500;
+}
+
+.input-container { 
+    width: 98%;
 }
