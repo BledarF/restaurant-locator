@@ -2,16 +2,19 @@ import React from "react";
 import { Grid } from "@mui/material";
 import RESTAURANT_LOCATOR_NAME from "../../data/GeneralConstants";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
+import { useNavigate } from "react-router-dom";
 import "../../styles/layout/_navbar.scss";
 import "../../styles/common-components/button/_button.scss";
 
 export const NavBar = () => {
+  const navigate = useNavigate();
+
   const loginButtonClick = () => {
-    console.log("i clicked the  button");
+    navigate("/login");
   };
 
   const signupButtonClick = () => {
-    console.log("i clicked the  button");
+    navigate("/signup");
   };
 
   return (

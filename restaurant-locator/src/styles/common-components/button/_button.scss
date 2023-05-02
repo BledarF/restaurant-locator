@@ -18,7 +18,12 @@
     margin: 0 !important;
 }
 
-.base:hover { 
+.base:hover  { 
+    background-color: green !important;
+    border: 2px black solid !important;
+}
+
+.submit:hover  { 
     background-color: green !important;
     border: 2px black solid !important;
 }
