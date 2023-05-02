@@ -6,14 +6,19 @@
     border-radius: 1rem;
 
 
+
+
     .logo-container{ 
 
-        
-
         .restaurant-logo { 
-            margin-left: 2rem;
-            color: white;
+    
+            .link { 
+                margin-left: 2rem;
+                color: white !important;
+                text-decoration: none !important;
+            }
         }
+   
     }
 
  

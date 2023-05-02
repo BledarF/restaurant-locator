@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import RESTAURANT_LOCATOR_NAME from "../../data/GeneralConstants";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/layout/_navbar.scss";
 import "../../styles/common-components/button/_button.scss";
 
@@ -26,7 +26,12 @@ export const NavBar = () => {
       className="navbar-container"
     >
       <Grid className="logo-container">
-        <h2 className="restaurant-logo">{RESTAURANT_LOCATOR_NAME}</h2>
+        <h2 className="restaurant-logo">
+          {" "}
+          <Link className="link" to="/home">
+            {RESTAURANT_LOCATOR_NAME}
+          </Link>{" "}
+        </h2>
       </Grid>
       <Grid
         className="buttons-container"
