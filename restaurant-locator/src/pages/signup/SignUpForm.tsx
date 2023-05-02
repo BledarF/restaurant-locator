@@ -13,6 +13,7 @@ import {
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
 import "../../styles/common-components/button/_button.scss";
+import { Link } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -89,6 +90,13 @@ export const SignUpForm = () => {
                   type="submit"
                 />
               </Grid>
+
+              <p className="signup-para">
+                Account already made?{" "}
+                <Link to="/login">
+                  <span className="signup-link">Login</span>
+                </Link>
+              </p>
             </Form>
           )}
         </Formik>

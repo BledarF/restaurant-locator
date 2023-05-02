@@ -12,6 +12,7 @@ import {
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
 import "../../styles/common-components/button/_button.scss";
+import { Link } from "react-router-dom";
 
 interface FormValues {
   email: string;
@@ -68,6 +69,13 @@ export const LoginForm = () => {
                   type="submit"
                 />
               </Grid>
+
+              <p className="login-para">
+                Dont have an account?{" "}
+                <Link to="/signup">
+                  <span className="login-link">Register here</span>
+                </Link>
+              </p>
             </Form>
           )}
         </Formik>
