@@ -5,7 +5,16 @@
     color: white !important;
     width: 6rem !important;
     height: 2.5rem !important;
-    font-size: 0.85rem !important;
+}
+
+.submit { 
+    background-color: purple !important;
+    border: 2px black solid !important;
+    color: white !important;
+    width: 100% !important;
+    height: 2.5rem !important;
+    font-size: 1rem !important;
+    font-weight: 900 !important;
 }
 
 .base:hover { 

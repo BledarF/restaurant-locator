@@ -1,7 +1,7 @@
 import React from "react";
 import { MouseEventHandler } from "react";
 import Button from "@mui/material/Button";
-import { ButtonVariants } from "../../data/Types";
+import { ButtonTypes, ButtonVariants } from "../../data/Types";
 import "../../styles/common-components/button/_button.scss";
 
 interface ButtonProps {
@@ -9,14 +9,16 @@ interface ButtonProps {
   onClickHandler?: MouseEventHandler<HTMLButtonElement>;
   variant?: ButtonVariants;
   isDisabled?: boolean;
+  type?: ButtonTypes;
   className?: string;
 }
 
 export const ButtonComponent = ({
   label,
+  onClickHandler,
   variant,
   isDisabled,
-  onClickHandler,
+  type,
   className,
 }: ButtonProps) => {
   return (
@@ -25,6 +27,7 @@ export const ButtonComponent = ({
       variant={variant}
       disabled={isDisabled}
       className={className}
+      type={type}
     >
       {label}
     </Button>

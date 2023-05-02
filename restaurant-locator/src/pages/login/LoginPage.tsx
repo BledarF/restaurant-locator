@@ -7,7 +7,7 @@ export const LoginPage = () => {
   return (
     <Card className="login-page-container">
       <LoginForm />
-      <Grid>
+      <Grid className="image-container">
         <img alt="food img" />
       </Grid>
     </Card>
