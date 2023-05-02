@@ -1,13 +1,14 @@
 import React from "react";
 import { Card, Grid } from "@mui/material";
 import { Formik, FormikProps, Form } from "formik";
-import { LOGIN_VALIDATION_SCHEMA } from "../../data/FormSchemas";
+import { REGISTRATION_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import { InputComponent } from "../../common-components/input/InputComponent";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
 import {
   EMAIL_ADDRESS_LABEL,
-  LOGIN_LABEL,
   PASSWORD_LABEL,
+  SIGNUP_LABEL,
+  CONFIRM_PASSWORD_LABEL,
 } from "../../data/AuthConstants";
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
@@ -16,18 +17,23 @@ import "../../styles/common-components/button/_button.scss";
 interface FormValues {
   email: string;
   password: string;
+  confirmPassword: string;
 }
 
-export const LoginForm = () => {
-  const initialValues: FormValues = { email: "", password: "" };
+export const SignUpForm = () => {
+  const initialValues: FormValues = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
 
   return (
-    <Card className="card-login-container">
+    <Card className="card-signup-container">
       <Grid className="content-container">
-        <h2 className="auth-heading">{LOGIN_LABEL}</h2>
+        <h2 className="auth-heading">{SIGNUP_LABEL}</h2>
         <Formik
           initialValues={initialValues}
-          validationSchema={LOGIN_VALIDATION_SCHEMA}
+          validationSchema={REGISTRATION_VALIDATION_SCHEMA}
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values: FormValues) => console.log(values)}
@@ -61,9 +67,24 @@ export const LoginForm = () => {
                 labelStyle="input-label"
                 errorStyle="input-error-message"
               />
+
+              <InputComponent
+                onChangeHandler={handleChange("confirmPassword")}
+                type="password"
+                label={CONFIRM_PASSWORD_LABEL}
+                errorMessage={
+                  errors.confirmPassword && touched.confirmPassword
+                    ? errors.confirmPassword
+                    : ""
+                }
+                inputContainerStyle="input-container"
+                inputStyle={errors.password ? "input-error" : "input-base"}
+                labelStyle="input-label"
+                errorStyle="input-error-message"
+              />
               <Grid className="button-container">
                 <ButtonComponent
-                  label={LOGIN_LABEL}
+                  label={SIGNUP_LABEL}
                   className="submit"
                   type="submit"
                 />
