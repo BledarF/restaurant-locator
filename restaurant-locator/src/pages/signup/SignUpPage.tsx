@@ -1,15 +1,15 @@
 import React from "react";
 import { Card, Grid } from "@mui/material";
-import { LoginForm } from "./LoginForm";
-import ManEating from "../../assets/images/ManEating.png";
+import { SignUpForm } from "./SignUpForm";
+import Food from "../../assets/images/Food.png";
 import "../../styles/pages/auth/_auth.scss";
 
-export const LoginPage = () => {
+export const SignUpPage = () => {
   return (
     <Card className="auth-page-container">
-      <LoginForm />
+      <SignUpForm />
       <Grid className="image-container">
-        <img src={ManEating} alt="food img" className="img" />
+        <img src={Food} alt="food img" className="img" />
       </Grid>
     </Card>
   );
