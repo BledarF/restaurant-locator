@@ -12,6 +12,7 @@ import {
   CONFIRM_PASSWORD_LABEL,
   SIGNUP_ENDPOINT,
   BASE_URL,
+  POST_METHOD,
 } from "../../data/AuthConstants";
 import { REGISTRATION_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import "../../styles/common-components/input/_input.scss";
@@ -60,11 +61,15 @@ export const SignUpForm = () => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={async (values: FormValues) => {
-            const response = await useHttp(BASE_URL + SIGNUP_ENDPOINT, "POST", {
-              email: values.email,
-              password: values.password,
-              confirmPassword: values.confirmPassword,
-            });
+            const response = await useHttp(
+              BASE_URL + SIGNUP_ENDPOINT,
+              POST_METHOD,
+              {
+                email: values.email,
+                password: values.password,
+                confirmPassword: values.confirmPassword,
+              }
+            );
 
             response
               ? handleResponse(response)

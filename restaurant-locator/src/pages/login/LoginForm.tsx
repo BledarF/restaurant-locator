@@ -1,18 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Grid } from "@mui/material";
 import { Formik, FormikProps, Form } from "formik";
+import { AxiosResponse } from "axios";
 import { LOGIN_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import { InputComponent } from "../../common-components/input/InputComponent";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
 import {
+  BASE_URL,
   EMAIL_ADDRESS_LABEL,
   LOGIN_LABEL,
   PASSWORD_LABEL,
+  LOGIN_ENDPOINT,
+  POST_METHOD,
 } from "../../data/AuthConstants";
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
 import "../../styles/common-components/button/_button.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useHttp } from "../../hooks/UseHttp";
 
 interface FormValues {
   email: string;
@@ -21,6 +26,26 @@ interface FormValues {
 
 export const LoginForm = () => {
   const initialValues: FormValues = { email: "", password: "" };
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const handleResponse = (response: AxiosResponse<any>) => {
+    switch (response.status) {
+      case 200:
+        setError("");
+        document.cookie = `accessToken=${response?.data.accessToken}; path=/; HttpOnly`;
+        document.cookie = `refreshToken=${response?.data.refreshToken}; path=/; HttpOnly`;
+        navigate("/login");
+        break;
+      case 403:
+        setError(response.data);
+        break;
+      default:
+        setError("Server error");
+        break;
+    }
+  };
 
   return (
     <Card className="card-login-container">
@@ -31,7 +56,21 @@ export const LoginForm = () => {
           validationSchema={LOGIN_VALIDATION_SCHEMA}
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values: FormValues) => console.log(values)}
+          onSubmit={async (values: FormValues) => {
+            const response = await useHttp(
+              BASE_URL + LOGIN_ENDPOINT,
+              POST_METHOD,
+              {
+                email: values.email,
+                password: values.password,
+              }
+            );
+            console.log(response);
+
+            response
+              ? handleResponse(response)
+              : setError("Something went wrong");
+          }}
         >
           {({
             handleChange,
@@ -76,6 +115,8 @@ export const LoginForm = () => {
                   <span className="login-link">Register here</span>
                 </Link>
               </p>
+
+              <p className="error">{error}</p>
             </Form>
           )}
         </Formik>
