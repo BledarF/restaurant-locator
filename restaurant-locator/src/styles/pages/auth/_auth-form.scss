@@ -36,6 +36,15 @@
         }
 
 
+
+      .error { 
+        width: 100%; 
+        color: red; 
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+
       
    
     }
@@ -78,6 +87,13 @@
         .signup-link { 
           color: blue;
         }
+      }
+
+      .error { 
+        width: 100%; 
+        color: red; 
+        font-size: 0.8rem;
+        text-align: center;
       }
 
  

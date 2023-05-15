@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Grid } from "@mui/material";
 import { Formik, FormikProps, Form } from "formik";
-import { REGISTRATION_VALIDATION_SCHEMA } from "../../data/FormSchemas";
+import { useNavigate } from "react-router-dom";
+import { useHttp } from "../../hooks/UseHttp";
 import { InputComponent } from "../../common-components/input/InputComponent";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
 import {
@@ -9,11 +10,16 @@ import {
   PASSWORD_LABEL,
   SIGNUP_LABEL,
   CONFIRM_PASSWORD_LABEL,
+  SIGNUP_ENDPOINT,
+  BASE_URL,
+  POST_METHOD,
 } from "../../data/AuthConstants";
+import { REGISTRATION_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
 import "../../styles/common-components/button/_button.scss";
 import { Link } from "react-router-dom";
+import { AxiosResponse } from "axios";
 
 interface FormValues {
   email: string;
@@ -22,10 +28,27 @@ interface FormValues {
 }
 
 export const SignUpForm = () => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const initialValues: FormValues = {
     email: "",
     password: "",
     confirmPassword: "",
+  };
+
+  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+  const handleResponse = (response: AxiosResponse<any>) => {
+    switch (response.status) {
+      case 200:
+        navigate("/login");
+        break;
+      case 400:
+        setError(response.data);
+        break;
+      default:
+        setError("Server error");
+        break;
+    }
   };
 
   return (
@@ -37,7 +60,21 @@ export const SignUpForm = () => {
           validationSchema={REGISTRATION_VALIDATION_SCHEMA}
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values: FormValues) => console.log(values)}
+          onSubmit={async (values: FormValues) => {
+            const response = await useHttp(
+              BASE_URL + SIGNUP_ENDPOINT,
+              POST_METHOD,
+              {
+                email: values.email,
+                password: values.password,
+                confirmPassword: values.confirmPassword,
+              }
+            );
+
+            response
+              ? handleResponse(response)
+              : setError("Something went wrong");
+          }}
         >
           {({
             handleChange,
@@ -97,6 +134,8 @@ export const SignUpForm = () => {
                   <span className="signup-link">Login</span>
                 </Link>
               </p>
+
+              <p className="error">{error}</p>
             </Form>
           )}
         </Formik>
