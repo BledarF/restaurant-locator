@@ -10,10 +10,16 @@ export const useHttp = async (
     const response: AxiosResponse = await axios(url, {
       method,
       data,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     });
-    return response.data;
+    return response as AxiosResponse;
   } catch (error) {
-    console.error(error);
-    return undefined;
+    if (axios.isAxiosError(error)) {
+      return error.response;
+    } else {
+      return undefined;
+    }
   }
 };

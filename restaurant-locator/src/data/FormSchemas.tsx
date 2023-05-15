@@ -9,12 +9,6 @@ export const LOGIN_VALIDATION_SCHEMA = Yup.object().shape({
 });
 
 export const REGISTRATION_VALIDATION_SCHEMA = Yup.object().shape({
-  firstName: Yup.string()
-    .required("First Name is Required")
-    .min(1, "First Name is Too Short"),
-  lastName: Yup.string()
-    .required("Last Name is Required")
-    .min(1, "Last Name is Too Short"),
   email: Yup.string().email("Invalid email").required("Email is Required"),
   password: Yup.string()
     .required("No password provided")
