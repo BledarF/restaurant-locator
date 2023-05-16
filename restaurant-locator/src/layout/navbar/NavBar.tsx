@@ -47,7 +47,7 @@ export const NavBar = () => {
       <Grid className="logo-container">
         <h2 className="restaurant-logo">
           {" "}
-          <Link className="link" to="/home">
+          <Link className="link" to={isLoggedIn ? "/landing" : "/home"}>
             {RESTAURANT_LOCATOR_NAME}
           </Link>{" "}
         </h2>

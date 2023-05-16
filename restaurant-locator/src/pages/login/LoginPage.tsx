@@ -3,7 +3,6 @@ import { Card, Grid } from "@mui/material";
 import { LoginForm } from "./LoginForm";
 import ManEating from "../../assets/images/ManEating.png";
 import "../../styles/pages/auth/_auth.scss";
-import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   useEffect(() => {

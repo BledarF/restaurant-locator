@@ -7,6 +7,7 @@ export const BASE_URL = "http://localhost:8080/api";
 export const AUTH_ENDPOINT = "/auth";
 export const LOGIN_ENDPOINT = "/login";
 export const SIGNUP_ENDPOINT = "/register";
+export const REFRESH_ENDPOINT = "/endpoint";
 export const LOGOUT_ENDPOINT = "/logout";
 export const GET_METHOD = "GET";
 export const PUT_METHOD = "PUT";

@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     const currentPage = localStorage.getItem("route");
     const isLoggedIn = localStorage.getItem("isLoggedIn");
+    console.log(currentPage);
     currentPage
       ? navigate(currentPage)
       : isLoggedIn

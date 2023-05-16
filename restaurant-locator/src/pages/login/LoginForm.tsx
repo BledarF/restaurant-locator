@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Card, Grid } from "@mui/material";
 import { Formik, FormikProps, Form } from "formik";
 import { AxiosResponse } from "axios";
-import Cookies from "js-cookie";
 import { LOGIN_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import { InputComponent } from "../../common-components/input/InputComponent";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
