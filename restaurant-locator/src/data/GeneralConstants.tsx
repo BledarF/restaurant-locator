@@ -1,3 +1,3 @@
-const RESTAURANT_LOCATOR_NAME = "Bledar's Restaurant Locator";
+const RESTAURANT_LOCATOR_NAME = "X";
 
 export default RESTAURANT_LOCATOR_NAME;

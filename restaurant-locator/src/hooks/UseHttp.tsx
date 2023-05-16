@@ -10,9 +10,7 @@ export const useHttp = async (
     const response: AxiosResponse = await axios(url, {
       method,
       data,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
+      withCredentials: true,
     });
     return response as AxiosResponse;
   } catch (error) {

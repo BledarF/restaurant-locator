@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Grid } from "@mui/material";
 import { Formik, FormikProps, Form } from "formik";
 import { AxiosResponse } from "axios";
+import Cookies from "js-cookie";
 import { LOGIN_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import { InputComponent } from "../../common-components/input/InputComponent";
 import { ButtonComponent } from "../../common-components/button/ButtonComponent";
@@ -34,9 +35,9 @@ export const LoginForm = () => {
     switch (response.status) {
       case 200:
         setError("");
-        document.cookie = `accessToken=${response?.data.accessToken}; path=/; HttpOnly`;
-        document.cookie = `refreshToken=${response?.data.refreshToken}; path=/; HttpOnly`;
-        navigate("/login");
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("route", "/landing");
+        navigate("/landing");
         break;
       case 403:
         setError(response.data);

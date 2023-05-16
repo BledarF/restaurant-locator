@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid, Card } from "@mui/material";
 import { HOME_PAGE_TITLE, HOME_PAGE_SUBHEADING } from "./HomePageConstants";
 import "../../styles/pages/home/_home.scss";
 
 export const HomePage = () => {
+  useEffect(() => {
+    localStorage.setItem("route", "/home");
+  }, []);
   return (
     <Grid
       container
