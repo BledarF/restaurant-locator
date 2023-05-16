@@ -13,6 +13,7 @@ import {
   PASSWORD_LABEL,
   LOGIN_ENDPOINT,
   POST_METHOD,
+  AUTH_ENDPOINT,
 } from "../../data/AuthConstants";
 import "../../styles/common-components/input/_input.scss";
 import "../../styles/pages/auth/_auth-form.scss";
@@ -59,7 +60,7 @@ export const LoginForm = () => {
           validateOnBlur={false}
           onSubmit={async (values: FormValues) => {
             const response = await useHttp(
-              BASE_URL + LOGIN_ENDPOINT,
+              BASE_URL + AUTH_ENDPOINT + LOGIN_ENDPOINT,
               POST_METHOD,
               {
                 email: values.email,
