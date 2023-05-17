@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { axiosInstance } from "../api/axios";
 
 export const useHttp = async (
   url: string,
@@ -7,12 +8,9 @@ export const useHttp = async (
   data?: any
 ) => {
   try {
-    const response: AxiosResponse = await axios(url, {
+    const response: AxiosResponse = await axiosInstance(url, {
       method,
       data,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
     });
     return response as AxiosResponse;
   } catch (error) {

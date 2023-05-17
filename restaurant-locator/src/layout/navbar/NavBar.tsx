@@ -5,9 +5,17 @@ import { ButtonComponent } from "../../common-components/button/ButtonComponent"
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/layout/_navbar.scss";
 import "../../styles/common-components/button/_button.scss";
+import {
+  AUTH_ENDPOINT,
+  BASE_URL,
+  LOGOUT_ENDPOINT,
+  POST_METHOD,
+} from "../../data/AuthConstants";
+import { useHttp } from "../../hooks/UseHttp";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   const loginButtonClick = () => {
     navigate("/login");
@@ -15,6 +23,17 @@ export const NavBar = () => {
 
   const signupButtonClick = () => {
     navigate("/signup");
+  };
+
+  const logoutButtonClick = async () => {
+    const response = await useHttp(
+      BASE_URL + AUTH_ENDPOINT + LOGOUT_ENDPOINT,
+      POST_METHOD
+    );
+    console.log(response);
+    localStorage.removeItem("isLoggedIn");
+    localStorage.setItem("route", "/home");
+    navigate("/home");
   };
 
   return (
@@ -28,30 +47,41 @@ export const NavBar = () => {
       <Grid className="logo-container">
         <h2 className="restaurant-logo">
           {" "}
-          <Link className="link" to="/home">
+          <Link className="link" to={isLoggedIn ? "/landing" : "/home"}>
             {RESTAURANT_LOCATOR_NAME}
           </Link>{" "}
         </h2>
       </Grid>
-      <Grid
-        className="buttons-container"
-        container
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <ButtonComponent
-          label="Login"
-          variant="outlined"
-          onClickHandler={loginButtonClick}
-          className="base"
-        />
-        <ButtonComponent
-          label="Sign up"
-          variant="outlined"
-          onClickHandler={signupButtonClick}
-          className="base"
-        />
-      </Grid>
+      {isLoggedIn ? (
+        <Grid className="buttons-container" container alignItems="center">
+          <ButtonComponent
+            label="Log out"
+            variant="outlined"
+            onClickHandler={logoutButtonClick}
+            className="submit"
+          />
+        </Grid>
+      ) : (
+        <Grid
+          className="buttons-container"
+          container
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <ButtonComponent
+            label="Login"
+            variant="outlined"
+            onClickHandler={loginButtonClick}
+            className="base"
+          />
+          <ButtonComponent
+            label="Sign up"
+            variant="outlined"
+            onClickHandler={signupButtonClick}
+            className="base"
+          />
+        </Grid>
+      )}
     </Grid>
   );
 };

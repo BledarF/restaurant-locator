@@ -13,6 +13,7 @@ import {
   SIGNUP_ENDPOINT,
   BASE_URL,
   POST_METHOD,
+  AUTH_ENDPOINT,
 } from "../../data/AuthConstants";
 import { REGISTRATION_VALIDATION_SCHEMA } from "../../data/FormSchemas";
 import "../../styles/common-components/input/_input.scss";
@@ -62,7 +63,7 @@ export const SignUpForm = () => {
           validateOnBlur={false}
           onSubmit={async (values: FormValues) => {
             const response = await useHttp(
-              BASE_URL + SIGNUP_ENDPOINT,
+              BASE_URL + AUTH_ENDPOINT + SIGNUP_ENDPOINT,
               POST_METHOD,
               {
                 email: values.email,
