@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "../pages/home/HomePage";
 import { LoginPage } from "../pages/login/LoginPage";
-import { ProtectedRoutes } from "./ProtectedRoutes";
+import { ProtectedRoute } from "./ProtectedRoute";
 import { SignUpPage } from "../pages/signup/SignUpPage";
 import App from "../App";
 import { Landing } from "../pages/landing/Landing";
@@ -19,33 +19,33 @@ export const router = createBrowserRouter([
       {
         path: "/home",
         element: (
-          <ProtectedRoutes requireAuth={false}>
+          <ProtectedRoute requireAuth={false}>
             <HomePage />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
         path: "/login",
         element: (
-          <ProtectedRoutes requireAuth={false}>
+          <ProtectedRoute requireAuth={false}>
             <LoginPage />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
         path: "/signup",
         element: (
-          <ProtectedRoutes requireAuth={false}>
+          <ProtectedRoute requireAuth={false}>
             <SignUpPage />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
       {
         path: "/landing",
         element: (
-          <ProtectedRoutes requireAuth={true}>
+          <ProtectedRoute requireAuth={true}>
             <Landing />
-          </ProtectedRoutes>
+          </ProtectedRoute>
         ),
       },
     ],
