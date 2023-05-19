@@ -6,7 +6,7 @@ interface routingProps {
   requireAuth: boolean;
 }
 
-export const ProtectedRoutes = ({ children, requireAuth }: routingProps) => {
+export const ProtectedRoute = ({ children, requireAuth }: routingProps) => {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
   if (isLoggedIn || (!isLoggedIn && !requireAuth)) {
